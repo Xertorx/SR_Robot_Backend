@@ -1,22 +1,22 @@
 const express = require('express');
 const router = express.Router();
 
-const authRoutes = require('./authRoutes');
-const technicianRoutes = require('./technicianRoutes');
-const quoteRoutes = require('./quoteRoutes');
-const orderRoutes = require('./orderRoutes');
-const chatRoutes = require('./chatRoutes');
-const reviewRoutes = require('./reviewRoutes');
-const supplierRoutes = require('./supplierRoutes');
-const adminRoutes = require('./adminRoutes');
-
-router.use('/auth', authRoutes);
-router.use('/technicians', technicianRoutes);
-router.use('/quotes', quoteRoutes);
-router.use('/orders', orderRoutes);
-router.use('/chat', chatRoutes);
-router.use('/reviews', reviewRoutes);
-router.use('/supplier', supplierRoutes);
-router.use('/admin', adminRoutes);
+router.use('/auth', require('./authRoutes'));
+router.use('/technicians', require('./technicianRoutes'));
+router.use('/quote-requests', require('./quoteRoutes'));
+router.use('/quotes', require('./legacyQuoteRoutes'));
+router.use('/appointments', require('./appointmentRoutes'));
+router.use('/orders', require('./orderRoutes'));
+router.use('/chat', require('./chatRoutes'));
+router.use('/reviews', require('./reviewRoutes'));
+router.use('/notifications', require('./notificationRoutes'));
+router.use('/client', require('./clientRoutes'));
+router.use('/payments', require('./paymentRoutes'));
+router.use('/subscriptions', require('./subscriptionRoutes'));
+router.use('/supplier', require('./supplierRoutes'));
+router.use('/disputes', require('./disputeRoutes'));
+router.use('/reports', require('./reportRoutes'));
+router.use('/admin', require('./adminRoutes'));
+router.use('/config', require('./configRoutes'));
 
 module.exports = router;

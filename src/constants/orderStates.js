@@ -18,4 +18,12 @@ const ALLOWED_TRANSITIONS = {
   DISPUTA: ['ENTREGADO', 'CANCELADO']
 };
 
-module.exports = { ORDER_STATES, ALLOWED_TRANSITIONS };
+// Subestados internos: el front sigue mostrando solo los 5 estados visibles
+const SUB_STATES = {
+  DIAGNOSTICO: ['APROBACION_REPUESTO'],
+  EN_REPARACION: ['PRUEBAS_CALIDAD']
+};
+
+const ACTIVE_STATES = ['SOLICITADO', 'DIAGNOSTICO', 'EN_REPARACION', 'LISTO', 'DISPUTA'];
+
+module.exports = { ORDER_STATES, ALLOWED_TRANSITIONS, SUB_STATES, ACTIVE_STATES };

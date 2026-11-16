@@ -1,0 +1,32 @@
+services:
+  - type: web
+    name: sr-robot-backend
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /health
+    autoDeploy: true
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: JWT_SECRET
+        generateValue: true
+      - key: PAYMENT_WEBHOOK_SECRET
+        generateValue: true
+      # true = carga usuarios de demo (contraseña Password123!). Ponlo en false con datos reales.
+      - key: SEED_DATA
+        value: "true"
+      # true = la API devuelve el OTP en la respuesta (demo sin SMS). Poner false con proveedor real.
+      - key: EXPOSE_OTP
+        value: "true"
+      - key: ADMIN_EMAIL
+        sync: false
+      - key: ADMIN_PASSWORD
+        sync: false
+      # Orígenes del front separados por coma; vacío = cualquiera
+      - key: CORS_ORIGINS
+        sync: false
+      - key: PAYMENT_AUTO_APPROVE
+        value: "true"
+      - key: TZ_OFFSET
+        value: "-05:00"
